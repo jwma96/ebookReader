@@ -17,7 +17,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.d.ebookreader.activity.bookshelf;
+import com.example.d.ebookreader.activity.BookShelf;
 import com.example.d.ebookreader.util.MyDBHelper;
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -88,7 +88,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     flag=true;
                 }
             }
-            if(flag==true){
+            if(flag){
                 editor=pref.edit();
                 if(ck.isChecked()){
                     editor.putBoolean("remember_password",true);
@@ -99,7 +99,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     editor.clear();
                 }
                 editor.commit();
-                Intent intent=new Intent(MainActivity.this,bookshelf.class);
+                Intent intent=new Intent(MainActivity.this,BookShelf.class);
                 startActivity(intent);
                 finish();
             }

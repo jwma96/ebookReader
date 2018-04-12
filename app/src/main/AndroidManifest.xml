@@ -15,7 +15,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.BookShelf"></activity>
-    </application>
+        <activity android:name=".activity.BookShelf" />
+        <activity android:name=".activity.bookRead">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW">
 
+                </action>
+                <category android:name="android.intent.category.DEFAULT">
+
+                </category>
+                <data android:mimeType="text/plain">
+
+                </data>
+            </intent-filter>
+        </activity>
+    </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 </manifest>
