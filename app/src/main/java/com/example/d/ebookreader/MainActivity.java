@@ -1,7 +1,6 @@
 package com.example.d.ebookreader;
 
 
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.d.ebookreader.activity.BookShelf;
 import com.example.d.ebookreader.util.MyDBHelper;
+
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private MyDBHelper helper;
@@ -99,7 +99,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     editor.clear();
                 }
                 editor.commit();
-                Intent intent=new Intent(MainActivity.this,BookShelf.class);
+               Intent intent=new Intent(MainActivity.this,BookShelf.class);
+               // Intent intent=new Intent(MainActivity.this,filetest.class);
                 startActivity(intent);
                 finish();
             }

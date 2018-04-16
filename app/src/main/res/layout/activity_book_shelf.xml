@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#CCCCCC"
-    tools:context="com.example.d.ebookreader.activity.bookshelf">
+    tools:context="com.example.d.ebookreader.activity.BookShelf">
 
 
     <LinearLayout
@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/addbtn"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_weight="0.2"/>
