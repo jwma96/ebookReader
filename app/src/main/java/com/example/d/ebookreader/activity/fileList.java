@@ -27,8 +27,8 @@ public class fileList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_list);
-       l1=(LinearLayout)findViewById(R.id.L1);
-        lView=(ListView)findViewById(R.id.list_view);
+       l1=(LinearLayout)findViewById(R.id.L1);//l1加载列表  可改为gifView
+        lView=(ListView)findViewById(R.id.list_view);//lView列表
         loadTask lt=new loadTask();
         lt.execute();
       /*  initFile();
@@ -72,18 +72,20 @@ public class fileList extends AppCompatActivity {
         }
         return str;
     }
-class loadTask extends AsyncTask<Void,Void,Boolean>{
+class loadTask extends AsyncTask<Void,Void,Void>{
     protected  void onPreExecute(){
+        l1.setVisibility(View.VISIBLE);
+
+    }
+    protected  Void doInBackground(Void... parms) {
         initFile();
+        return null;
+        //Log.i("ope","listview初始化完毕");
+    }
+    protected void onPostExecute(Void avoid){
         FileAdapter adapter=new FileAdapter(fileList.this,R.layout.file_item,fileList);
         ListView listView=(ListView)findViewById(R.id.list_view);
         listView.setAdapter(adapter);
-        Log.i("ope","listview初始化完毕");
-    }
-    protected  Boolean doInBackground(Void... parms) {
-        return true;
-    }
-    protected void onPostExecute(Void...parms){
         Log.i("set","准备切换界面");
         l1.setVisibility(View.GONE);
         lView.setVisibility(View.VISIBLE);
