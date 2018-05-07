@@ -28,7 +28,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.filetest" />
-        <activity android:name=".activity.fileList"></activity>
+        <activity android:name=".activity.fileList" />
+        <activity android:name=".activity.demoRead"></activity>
     </application>
 
 </manifest>

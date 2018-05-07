@@ -56,7 +56,7 @@ public class BookShelf  extends AppCompatActivity implements View.OnClickListene
         //btnAdd.setOnClickListener(this);
 
     }
-    public void onClick(View v){//外层布局一旦加载碎片事件监听器失效，待解决
+    public void onClick(View v){//外层布局一旦加载碎片事件监听器失效，onCreateActivity
 
         //sbook.searchBooks();
         Button btn=(Button)v;
@@ -86,6 +86,7 @@ public class BookShelf  extends AppCompatActivity implements View.OnClickListene
     }
     public static class ReadListFragment extends Fragment {
         private Button btn;
+        private Button btn1;//阅读第一本书 测试
 
         public ReadListFragment() {
         }
@@ -96,6 +97,8 @@ public class BookShelf  extends AppCompatActivity implements View.OnClickListene
 
             View rootView = inflater.inflate(R.layout.pager_book_list, container, false);
             btn = (Button) rootView.findViewById(R.id.btnAdd);
+            btn1=(Button)rootView.findViewById(R.id.book1);
+
             return rootView;
         }
         public void onActivityCreated(Bundle savedInstanceState){
@@ -105,6 +108,15 @@ public class BookShelf  extends AppCompatActivity implements View.OnClickListene
                 public void onClick(View view) {
                     Intent intent=new Intent(getActivity(),fileList.class);//Fragment中使用getActivity获得当前活动
                     startActivity(intent);
+                    getActivity().finish();//读书后需要返回，不应结束？？？
+                }
+            });
+            btn1.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    //滑动阅读
+                    Intent intent1=new Intent(getActivity(),demoRead.class);
+                    startActivity(intent1);
                     getActivity().finish();
                 }
             });

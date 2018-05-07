@@ -26,11 +26,14 @@ public class FileAdapter  extends ArrayAdapter<bookFile>{
     public View getView(int position, View convertView, ViewGroup parent){
         bookFile file=getItem(position);
         View view= LayoutInflater.from(getContext()).inflate(resourceId,null);
-        ImageView fImage=(ImageView)view.findViewById(R.id.fileImage);
-        TextView textView=(TextView)view.findViewById(R.id.file_name);
-        CheckBox ckb=(CheckBox)view.findViewById(R.id.ckb);
+        ImageView fImage=(ImageView)view.findViewById(R.id.items_imageView1);
+        TextView textViewn=(TextView)view.findViewById(R.id.items_textView1);
+        TextView textViews=(TextView)view.findViewById(R.id.items_textView2);
+        CheckBox ckb=(CheckBox)view.findViewById(R.id.cb_st);
         fImage.setImageResource(file.getImageId());
-        textView.setText(file.getName());
+        textViewn.setText(file.getName());
+        textViews.setText(file.getSize());
+        ckb.setChecked(file.getIsCho());
         return view;
 
     }

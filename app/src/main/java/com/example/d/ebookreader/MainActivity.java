@@ -31,7 +31,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         helper=new MyDBHelper(this,"user.db",null,1);
-        TextView t1 = (TextView) findViewById(R.id.name);
+        TextView t1 = (TextView) findViewById(R.id.name);//butterKnife优化
         TextView t2 = (TextView) findViewById(R.id.pass);
         Button login = (Button) findViewById(R.id.login);
         Button reg = (Button) findViewById(R.id.reg);
