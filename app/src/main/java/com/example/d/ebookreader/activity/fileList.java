@@ -28,6 +28,10 @@ public class fileList extends AppCompatActivity {
     private CheckBox cb;
   //  private boolean firstCk;//第一次被选中弹出popup window
     private int cNum=0;// 选中次数
+    private String[] fl;//存储文件路径
+    private int i=0;//文件路径数组
+    private boolean[] isclick;//判断listview的item是否被点击
+    private int itemNum;//item的个数
 
 
     //private List<Map<String,Object>> list_map = new ArrayList<Map<String,Object>>(); //定义一个适配器对象
@@ -45,10 +49,15 @@ public class fileList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                    long arg3) {
+                //判断当前是不是第一个选中的，若是则弹出popup window
+                //利用fl[i]得到选中文件的path
+                //设置复选框被选中
+                //若不是则判断当前是否被选中的为0，若是则收回popup window
                 //list_map.get(1).getIsCho()
 //点击后在标题上显示点击了第几行
                 setTitle("你点击了第"+arg2+"行");
-                //设置复选框被选中
+
+
             }
         });
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
@@ -102,6 +111,8 @@ public class fileList extends AppCompatActivity {
                     getFileName(file.listFiles());
                 } else {
                     String fileName = file.getName();
+                    fl[i]=file.getPath();
+                    i++;
                     if (fileName.endsWith(".txt")) {
                         if(file.length()/1024>50) {
                             long size=file.length()/1024;
@@ -142,6 +153,10 @@ class loadTask extends AsyncTask<Void,Void,Void>{
         FileAdapter adapter=new FileAdapter(fileList.this,R.layout.list_items,list_map);
        // ListView listView=(ListView)findViewById(R.id.list_view);
        listView.setAdapter(adapter);
+       itemNum= listView.getCount();//获取item的数量
+        for(int m=0;m<itemNum;m++){
+            isclick[m]=false;//初始化是否被选中，注意数组从0开始编号，item可能从1开始编号
+        }
       // SimpleAdapter simpleAdapter = new SimpleAdapter(
              //   fileList.this,/*传入一个上下文作为参数*/
               //  list_map,         /*传入相对应的数据源，这个数据源不仅仅是数据而且还是和界面相耦合的混合体。*/
